@@ -30,6 +30,8 @@ export function Detail(){
       .then(response => response.json())
       .then((data: CoinProp) => {
 
+        if(Number(data.price) <= 0) throw new Error("Error getting currency value")
+
         const price = Intl.NumberFormat("pt-BR", {
           style: "currency",
           currency:"BRL"
